@@ -14,7 +14,7 @@
                         v-for="(value,j) in item.children"
                         :key="j"
                         :name="childrenIndex(i,j,value)">
-                        <router-link :to="value.menu_url">{{value.menu_name}}</router-link>
+                        <router-link tag="div" :to="value.menu_url">{{value.menu_name}}</router-link>
                       </MenuItem>
                     </template>
                 </Submenu>

@@ -1,19 +1,20 @@
 <!-- 组件 -->
 <template>
   <div>
-    <Row>
-        <Col span="12">
-            <TimePicker format="HH:mma" placeholder="Select time" style="width: 112px"></TimePicker>
-        </Col>
-        <Col span="12">
-            <TimePicker format="HH:mma" type="timerange" placement="bottom-end" placeholder="Select time" style="width: 168px"></TimePicker>
-        </Col>
-    </Row>
-
+      <Tabs value="name1">
+        <TabPane label="标签一" name="name1">
+          <editor-a></editor-a>
+        </TabPane>
+        <TabPane label="标签二" name="name2">
+          <editor-b></editor-b>
+        </TabPane>
+    </Tabs>
   </div>
 </template>
 
 <script>
+import EditorA from './EditorA';
+import EditorB from './EditorB';
 export default {
   data () {
     return {
@@ -21,7 +22,8 @@ export default {
   },
 
   components: {
-
+    EditorA,
+    EditorB
   },
 
   computed: {},

@@ -6,19 +6,18 @@
   </div>
 </template>
 <script>
-import HeaderGroup from './components/HeaderGroup'
+import HeaderGroup from './components/HeaderGroup';
 export default {
-  data(){
+  data () {
     return{
 
-    }
-
+    };
   },
-  components:{
+  components: {
     HeaderGroup
   }
-  
-}
+
+};
 </script>
 
 <style lang="stylus">

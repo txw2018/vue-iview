@@ -1,11 +1,14 @@
 <!-- 用户统计 -->
 <template>
-  <div>
+  <div class="echarts">
     <div>
       <lineChart></lineChart>
     </div>
     <div>
-      <KLine :kLineData = "kLineData"></KLine>
+      <KLine
+        :kLineData="kLineData"
+        v-if="flag">
+      </KLine>
     </div>
   </div>
 </template>
@@ -19,6 +22,7 @@ export default {
     return {
       kLineData: {},
       kLineData1: {a: 2},
+      flag: false
     };
   },
 
@@ -45,17 +49,19 @@ export default {
             categoryData.push(item.splice(0, 1)[0]);
             values.push(item);
           });
-          // this.kLineData = {
-          //   categoryData,
-          //   values
-          // };
-          this.$set(this.kLineData, 'categoryData', categoryData);
-          this.$set(this.kLineData, 'values', values);
-          // console.log(this.kLineData);
+          this.flag = true;
+          this.kLineData = {
+            categoryData,
+            values
+          };
         });
     }
   }
 };
 </script>
 <style lang='stylus' scoped>
+.echarts
+  margin 100px 50px
+  display flex
+  justify-content flex-start
 </style>

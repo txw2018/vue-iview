@@ -27,10 +27,27 @@ export default {
   components: {},
 
   computed: {
-    getkLineData () {
-      return this.kLineData;
-    }
-
+    calculateMA () {
+      console.log(this.kLineData);
+      console.log(this.kLineData.values);
+      return function (dayCount) {
+        if(this.kLineData.values) {
+          var result = [];
+          for (var i = 0, len = this.kLineData.values.length; i < len; i++) {
+            if (i < dayCount) {
+              result.push('-');
+              continue;
+            }
+            var sum = 0;
+            for (var j = 0; j < dayCount; j++) {
+              sum += this.kLineData.values[i - j][1];
+            }
+            result.push(sum / dayCount);
+          }
+          return result;
+        };
+      };
+    },
   },
 
   mounted () {
@@ -38,25 +55,7 @@ export default {
   },
 
   methods: {
-    calculateMA (dayCount) {
-      console.log(this.getkLineData);
-      console.log(this.getkLineData.values);
-      if(this.getkLineData.values) {
-        var result = [];
-        for (var i = 0, len = this.getkLineData.values.length; i < len; i++) {
-          if (i < dayCount) {
-            result.push('-');
-            continue;
-          }
-          var sum = 0;
-          for (var j = 0; j < dayCount; j++) {
-            sum += this.getkLineData.values[i - j][1];
-          }
-          result.push(sum / dayCount);
-        }
-        return result;
-      };
-    },
+
     initEcharts () {
       let myChart = this.$echarts.init(document.getElementById('myChart3'));
       // 绘制图表
